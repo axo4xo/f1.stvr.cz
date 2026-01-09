@@ -99,7 +99,7 @@ export interface SessionResult {
 
 // Base URL for Jolpica API (Ergast successor)
 const JOLPICA_BASE_URL = "https://api.jolpi.ca/ergast/f1";
-const CURRENT_YEAR = "2025";
+const CURRENT_YEAR = "2026";
 
 // Fetch the current season's race schedule
 export const useRaceSchedule = () => {
@@ -170,7 +170,7 @@ export const useDriverStandings = () => {
                 setLoading(true);
 
                 const response = await fetch(
-                    `${JOLPICA_BASE_URL}/${CURRENT_YEAR}/driverStandings.json`
+                    `${JOLPICA_BASE_URL}/${CURRENT_YEAR}/driverstandings.json`
                 );
 
                 if (!response.ok) {
@@ -227,7 +227,7 @@ export const useConstructorStandings = () => {
                 setLoading(true);
 
                 const response = await fetch(
-                    `${JOLPICA_BASE_URL}/${CURRENT_YEAR}/constructorStandings.json`
+                    `${JOLPICA_BASE_URL}/${CURRENT_YEAR}/constructorstandings.json`
                 );
 
                 if (!response.ok) {

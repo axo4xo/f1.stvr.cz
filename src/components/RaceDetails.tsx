@@ -151,52 +151,52 @@ export function RaceDetails({ race, isOpen, onClose }: RaceDetailsProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className={`bg-gradient-to-b from-f1-dark to-[#1a1a1a] text-white border-gray-800 max-w-3xl w-[calc(100%-2rem)] rounded-xl sm:rounded-xl max-h-[95vh] md:max-h-[85vh] overflow-auto p-4 sm:p-6 ${status === 'current' ? 'bg-f1-red/20' : ''}`}>
-        <DialogClose className="absolute right-4 top-4 rounded-full p-2 bg-black/40 text-gray-400 hover:text-white">
+      <DialogContent className={`bg-gradient-to-b from-[#141414] to-[#0a0a0a] text-white border-white/5 max-w-3xl w-[calc(100%-2rem)] rounded-2xl sm:rounded-2xl max-h-[95vh] md:max-h-[85vh] overflow-auto p-5 sm:p-7 ${status === 'current' ? 'ring-2 ring-f1-red/30' : ''}`}>
+        <DialogClose className="absolute right-4 top-4 rounded-xl p-2.5 bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all border border-white/10">
           <XIcon className="h-4 w-4" />
         </DialogClose>
 
         <DialogHeader className="">
           <div className="flex flex-row justify-between items-start pr-8">
             <div>
-              <div className="flex flex-row gap-2 items-center mb-2">
-                <Badge className={`${className} text-white`}>
+              <div className="flex flex-row gap-2 items-center mb-3">
+                <Badge className={`${className} text-white shadow-lg ${status !== 'past' ? 'shadow-f1-red/20' : ''}`}>
                   {label}
                 </Badge>
-                <Badge className="bg-zinc-500 text-white">Kolo {race.round}</Badge>
+                <Badge className="bg-white/10 text-white border border-white/10">Kolo {race.round}</Badge>
               </div>
-              <DialogTitle className="text-xl sm:text-2xl font-bold leading-tight">{race.raceName}</DialogTitle>
-              <p className="text-gray-300 mt-1 text-sm sm:text-base">{race.Circuit.circuitName}</p>
+              <DialogTitle className="text-2xl sm:text-3xl font-black leading-tight">{race.raceName}</DialogTitle>
+              <p className="text-gray-400 mt-2 text-sm sm:text-base">{race.Circuit.circuitName}</p>
             </div>
           </div>
         </DialogHeader>
 
-        <div className="flex items-center text-gray-300 bg-black/20 rounded-md p-2.5 text-sm mb-2 -mt-1">
-          <CalendarIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2 text-gray-400 flex-shrink-0" />
-          <span className="line-clamp-1">{formattedDateRange}</span>
+        <div className="flex items-center text-gray-300 bg-white/5 backdrop-blur-sm rounded-xl p-3 text-sm mb-3 mt-2 border border-white/5">
+          <CalendarIcon className="h-4 w-4 mr-2.5 text-gray-500 flex-shrink-0" />
+          <span className="line-clamp-1 font-medium">{formattedDateRange}</span>
         </div>
 
         <Tabs defaultValue="schedule">
-          <TabsList className="bg-black/40 border border-gray-800 rounded-lg mb-4 p-1 w-full flex">
-            <TabsTrigger value="schedule" className="flex-1 rounded-md text-xs sm:text-sm data-[state=active]:bg-f1-red data-[state=active]:text-white">
-              <ClockIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1 sm:mr-1.5" />
+          <TabsList className="bg-white/5 border border-white/10 rounded-xl mb-5 p-1.5 w-full flex">
+            <TabsTrigger value="schedule" className="flex-1 rounded-lg text-xs sm:text-sm font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-f1-red data-[state=active]:to-f1-crimson data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-f1-red/20">
+              <ClockIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" />
               <span className="block">Program</span>
             </TabsTrigger>
-            <TabsTrigger value="circuit" className="flex-1 rounded-md text-xs sm:text-sm data-[state=active]:bg-f1-red data-[state=active]:text-white">
-              <MapPinIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1 sm:mr-1.5" />
+            <TabsTrigger value="circuit" className="flex-1 rounded-lg text-xs sm:text-sm font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-f1-red data-[state=active]:to-f1-crimson data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-f1-red/20">
+              <MapPinIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" />
               <span className="block">Okruh</span>
             </TabsTrigger>
             {status === "past" && (
-              <TabsTrigger value="results" className="flex-1 rounded-md text-xs sm:text-sm data-[state=active]:bg-f1-red data-[state=active]:text-white">
-                <TrophyIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1 sm:mr-1.5" />
+              <TabsTrigger value="results" className="flex-1 rounded-lg text-xs sm:text-sm font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-f1-red data-[state=active]:to-f1-crimson data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-f1-red/20">
+                <TrophyIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-1.5 sm:mr-2" />
                 <span className="block">Výsledky</span>
               </TabsTrigger>
             )}
           </TabsList>
 
           <TabsContent value="schedule">
-            <h4 className="font-semibold text-base sm:text-lg mb-3 sm:mb-4">Program závodního víkendu</h4>
-            <div className="">
+            <h4 className="font-bold text-lg sm:text-xl mb-4 sm:mb-5">Program závodního víkendu</h4>
+            <div className="space-y-1">
               {race.FirstPractice && (
                 <EventItem
                   title="1. trénink"
@@ -255,29 +255,29 @@ export function RaceDetails({ race, isOpen, onClose }: RaceDetailsProps) {
           </TabsContent>
 
           <TabsContent value="circuit" className="pt-1">
-            <h4 className="font-semibold text-base sm:text-lg mb-4">Informace o okruhu</h4>
-            <div className="space-y-4">
-              <div className="bg-black/20 rounded-lg p-3 sm:p-4 flex items-center gap-2 sm:gap-3">
-                <div className="bg-gray-800 p-2 rounded-md flex-shrink-0">
-                  <MapPinIcon className="h-4 w-4 sm:h-5 sm:w-5 text-gray-300" />
+            <h4 className="font-bold text-lg sm:text-xl mb-5">Informace o okruhu</h4>
+            <div className="space-y-3">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-5 flex items-center gap-4 border border-white/5 transition-all hover:bg-white/[0.07]">
+                <div className="bg-gradient-to-br from-white/10 to-white/5 p-3 rounded-xl flex-shrink-0 border border-white/10">
+                  <MapPinIcon className="h-5 w-5 text-gray-300" />
                 </div>
                 <div>
-                  <p className="text-gray-400 text-xs sm:text-sm">Lokalita</p>
-                  <p className="font-medium text-sm sm:text-base">{race.Circuit.Location.locality}, {race.Circuit.Location.country}</p>
+                  <p className="text-gray-500 text-xs sm:text-sm font-medium">Lokalita</p>
+                  <p className="font-bold text-base sm:text-lg text-white">{race.Circuit.Location.locality}, {race.Circuit.Location.country}</p>
                 </div>
               </div>
 
-              <div className="bg-black/20 rounded-lg p-3 sm:p-4 flex items-center gap-2 sm:gap-3">
-                <div className="bg-gray-800 p-2 rounded-md flex-shrink-0">
-                  <InfoIcon className="h-4 w-4 sm:h-5 sm:w-5 text-gray-300" />
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-5 flex items-center gap-4 border border-white/5 transition-all hover:bg-white/[0.07]">
+                <div className="bg-gradient-to-br from-white/10 to-white/5 p-3 rounded-xl flex-shrink-0 border border-white/10">
+                  <InfoIcon className="h-5 w-5 text-gray-300" />
                 </div>
                 <div>
-                  <p className="text-gray-400 text-xs sm:text-sm">Oficiální stránky</p>
+                  <p className="text-gray-500 text-xs sm:text-sm font-medium">Oficiální stránky</p>
                   <a
                     href={race.Circuit.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-f1-red hover:underline font-medium text-sm sm:text-base"
+                    className="text-f1-red hover:text-f1-crimson transition-colors font-bold text-base sm:text-lg"
                   >
                     Navštívit stránky
                   </a>
@@ -288,34 +288,34 @@ export function RaceDetails({ race, isOpen, onClose }: RaceDetailsProps) {
 
           {status === "past" && (
             <TabsContent value="results" className="pt-1">
-              <h4 className="font-semibold text-base sm:text-lg mb-4">Výsledky závodu</h4>
+              <h4 className="font-bold text-lg sm:text-xl mb-5">Výsledky závodu</h4>
               {loading && <p className="text-gray-400 text-sm sm:text-base">Načítání výsledků...</p>}
               {error && <p className="text-red-400 text-sm sm:text-base">{error}</p>}
               {!loading && !error && !raceResults && (
                 <p className="text-gray-400 text-sm sm:text-base">Výsledky zatím nejsou k dispozici</p>
               )}
               {!loading && !error && raceResults && raceResults.Results && (
-                <div className="overflow-x-auto -mx-4 sm:mx-0 bg-black/20 rounded-lg border border-gray-800">
+                <div className="overflow-x-auto -mx-4 sm:mx-0 bg-white/5 backdrop-blur-sm rounded-xl border border-white/5">
                   <div className="min-w-[480px]">
                     <table className="w-full border-collapse">
                       <thead>
-                        <tr className="border-b border-gray-800">
-                          <th className="text-left py-2 px-3 sm:py-3 sm:px-4 text-gray-400 text-xs sm:text-sm font-medium">Poz</th>
-                          <th className="text-left py-2 px-3 sm:py-3 sm:px-4 text-gray-400 text-xs sm:text-sm font-medium">Jezdec</th>
-                          <th className="text-left py-2 px-3 sm:py-3 sm:px-4 text-gray-400 text-xs sm:text-sm font-medium">Tým</th>
-                          <th className="text-right py-2 px-3 sm:py-3 sm:px-4 text-gray-400 text-xs sm:text-sm font-medium">Čas/Rozdíl</th>
+                        <tr className="border-b border-white/10">
+                          <th className="text-left py-3 px-4 text-gray-500 text-xs sm:text-sm font-semibold">Poz</th>
+                          <th className="text-left py-3 px-4 text-gray-500 text-xs sm:text-sm font-semibold">Jezdec</th>
+                          <th className="text-left py-3 px-4 text-gray-500 text-xs sm:text-sm font-semibold">Tým</th>
+                          <th className="text-right py-3 px-4 text-gray-500 text-xs sm:text-sm font-semibold">Čas/Rozdíl</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {raceResults.Results.map((result: RaceResult) => (
-                          <tr key={result.position} className="border-b border-gray-800 last:border-0 hover:bg-white/5">
-                            <td className="py-2 px-3 sm:py-3 sm:px-4 text-xs sm:text-sm">{result.position}</td>
-                            <td className="py-2 px-3 sm:py-3 sm:px-4 text-xs sm:text-sm">
-                              <span className="font-bold mr-1 sm:mr-2 text-white">{result.Driver.code}</span>
-                              {result.Driver.givenName} {result.Driver.familyName}
+                        {raceResults.Results.map((result: RaceResult, index: number) => (
+                          <tr key={result.position} className={`border-b border-white/5 last:border-0 transition-all hover:bg-gradient-to-r hover:from-f1-red/5 hover:to-transparent ${index < 3 ? 'bg-white/[0.02]' : ''}`}>
+                            <td className={`py-3 px-4 text-sm font-black ${parseInt(result.position) === 1 ? 'text-yellow-400' : parseInt(result.position) === 2 ? 'text-gray-300' : parseInt(result.position) === 3 ? 'text-amber-600' : 'text-gray-400'}`}>{result.position}</td>
+                            <td className="py-3 px-4 text-sm">
+                              <span className="font-bold mr-2 text-white bg-white/10 px-2 py-1 rounded-lg text-xs">{result.Driver.code}</span>
+                              <span className="text-gray-300">{result.Driver.givenName}</span> <span className="font-bold text-white">{result.Driver.familyName}</span>
                             </td>
-                            <td className="py-2 px-3 sm:py-3 sm:px-4 text-xs sm:text-sm">{result.Constructor.name}</td>
-                            <td className="py-2 px-3 sm:py-3 sm:px-4 text-right text-xs sm:text-sm">
+                            <td className="py-3 px-4 text-sm text-gray-400">{result.Constructor.name}</td>
+                            <td className="py-3 px-4 text-right text-sm font-medium text-gray-300">
                               {result.Time ? result.Time.time : (result.status || 'DNF')}
                             </td>
                           </tr>
@@ -367,19 +367,22 @@ function EventItem({ title, date, time, highlight = false }: {
 
   const isCurrent = isCurrentEvent();
   return (
-    <div className={`flex justify-between items-center p-3 ${isCurrent ? 'bg-gradient-to-r from-f1-red/10 to-f1-red/5 border-l-2 border-l-f1-red' :
-      highlight ? 'bg-gradient-to-r from-f1-red/5 to-transparent border-l-2 border-l-f1-red' :
-        'bg-black/10 border-l-2 border-l-gray-700'
-      } first:rounded-t-lg last:rounded-b-lg border-b border-b-gray-800/50`}>
+    <div className={`flex justify-between items-center p-4 rounded-xl transition-all ${isCurrent ? 'bg-gradient-to-r from-f1-red/15 to-f1-red/5 border-l-[3px] border-l-f1-red ring-1 ring-f1-red/20' :
+      highlight ? 'bg-gradient-to-r from-f1-red/10 to-transparent border-l-[3px] border-l-f1-red' :
+        'bg-white/[0.03] border-l-[3px] border-l-gray-600 hover:bg-white/[0.05]'
+      }`}>
       <div className="flex items-center gap-3">
-        <span className={`font-medium text-sm sm:text-base ${isCurrent ? 'text-f1-red' :
+        <span className={`font-semibold text-sm sm:text-base ${isCurrent ? 'text-f1-red' :
           highlight ? 'text-f1-red' :
             'text-white'
           }`}>{title}</span>
+        {isCurrent && (
+          <span className="px-2 py-0.5 bg-f1-red text-white text-xs font-bold rounded-full animate-pulse">LIVE</span>
+        )}
       </div>
       <div className="text-right">
-        <span className="block text-xs sm:text-sm text-gray-400">{formattedDate}</span>
-        <span className="block text-xs sm:text-sm font-medium text-gray-200">{formattedTime}</span>
+        <span className="block text-xs sm:text-sm text-gray-500">{formattedDate}</span>
+        <span className="block text-sm sm:text-base font-bold text-white">{formattedTime}</span>
       </div>
     </div>
   );
