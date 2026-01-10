@@ -252,7 +252,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-f1-red to-f1-crimson flex items-center justify-center">
-                <span className="text-white font-black text-sm">F1</span>
+                <img src="/logo26.png" alt="Logo" className="w-full h-full" />
               </div>
               <span className="text-sm font-medium text-gray-400">f1.stvr.cz</span>
             </div>
