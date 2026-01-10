@@ -23,7 +23,7 @@ export default {
         },
         extend: {
             fontFamily: {
-                f1: ["Twemoji Country Flags", "Inter", "sans-serif"],
+                f1: ["Twemoji Country Flags", "Stack Sans Text", "Inter", "sans-serif"],
             },
             colors: {
                 "f1-red": "#E10600",

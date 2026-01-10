@@ -21,8 +21,8 @@ export default defineConfig(({ mode }) => ({
                 "masked-icon.svg",
             ],
             manifest: {
-                name: "f1.stvr.cz by steveruu",
-                short_name: "f1.stvr.cz",
+                name: "f1 by steveruu",
+                short_name: "f1",
                 description: "Kompletní kalendář závodů a výsledky",
                 theme_color: "#000000",
                 icons: [
